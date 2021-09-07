@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,14 +23,50 @@ namespace IO_Link
         {
             txtbox_response.Clear();
             HttpClient client = new HttpClient();
-            var response = await client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
-            txtbox_response.Text = await response.Content.ReadAsStringAsync();
+            try
+            {
+                var response = await client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
+                if (response.IsSuccessStatusCode)
+                {
+                    txtbox_response.Text = await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    txtbox_response.Text = response.StatusCode.ToString();
+                }    
+            }
+            catch (Exception ex)
+            {
+                txtbox_response.Text = ex.Message;
+            }            
             client.Dispose();
         }
         private void btn_prettyjson_Click(object sender, EventArgs e)
         {
-            txtbox_response.Text = JToken.Parse(txtbox_response.Text).ToString();
-            txtbox_body.Text = JToken.Parse(txtbox_body.Text).ToString();                      
+            try
+            {
+                txtbox_response.Text = JToken.Parse(txtbox_response.Text).ToString();
+            }
+            catch (JsonReaderException jex)
+            {
+                txtbox_response.Text = jex.Message;
+            }
+            catch (Exception ex)
+            {
+                txtbox_response.Text = ex.Message;
+            }
+            try
+            {
+                txtbox_body.Text = JToken.Parse(txtbox_body.Text).ToString();
+            }
+            catch (JsonReaderException jex)
+            {
+                txtbox_body.Text = jex.Message;
+            }
+            catch (Exception ex)
+            {
+                txtbox_body.Text = ex.Message;
+            }                                 
         }
 
         private void btn_sendcmd_Click(object sender, EventArgs e)

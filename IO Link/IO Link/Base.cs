@@ -42,27 +42,34 @@ namespace IO_Link
             txtbox_processdata.Clear();
             txtbox_part_number.Clear();
             HttpClient client = new HttpClient();
-            string response_name = await client.GetStringAsync("http://" + txtbox_ipaddress.Text + "/iolinkmaster/port["+ port_number +"]/iolinkdevice/productname/getdata");
-            Response port_partnumber = JsonConvert.DeserializeObject<Response>(response_name);
-            if (port_partnumber.code == 200)
+            try
             {
-                txtbox_part_number.Text = port_partnumber.data.value;
-                string response_data = await client.GetStringAsync("http://" + txtbox_ipaddress.Text + "/iolinkmaster/port[" + port_number + "]/iolinkdevice/pdin/getdata");
-                Response port_processdata = JsonConvert.DeserializeObject<Response>(response_data);
-                if (port_partnumber.data.value == "OGD592")
+                string response_name = await client.GetStringAsync("http://" + txtbox_ipaddress.Text + "/iolinkmaster/port[" + port_number + "]/iolinkdevice/productname/getdata");
+                Response port_partnumber = JsonConvert.DeserializeObject<Response>(response_name);
+                if (port_partnumber.code == 200)
                 {
-                    int distance = int.Parse(port_processdata.data.value.Substring(0, 4), System.Globalization.NumberStyles.HexNumber);
-                    int reflectivity = int.Parse(port_processdata.data.value.Substring(8, 4), System.Globalization.NumberStyles.HexNumber);
-                    txtbox_processdata.AppendText("Distance  " + distance);
-                    txtbox_processdata.AppendText(Environment.NewLine);
-                    txtbox_processdata.AppendText("Reflectivity " + reflectivity);
+                    txtbox_part_number.Text = port_partnumber.data.value;
+                    string response_data = await client.GetStringAsync("http://" + txtbox_ipaddress.Text + "/iolinkmaster/port[" + port_number + "]/iolinkdevice/pdin/getdata");
+                    Response port_processdata = JsonConvert.DeserializeObject<Response>(response_data);
+                    if (port_partnumber.data.value == "OGD592")
+                    {
+                        int distance = int.Parse(port_processdata.data.value.Substring(0, 4), System.Globalization.NumberStyles.HexNumber);
+                        int reflectivity = int.Parse(port_processdata.data.value.Substring(8, 4), System.Globalization.NumberStyles.HexNumber);
+                        txtbox_processdata.AppendText("Distance  " + distance);
+                        txtbox_processdata.AppendText(Environment.NewLine);
+                        txtbox_processdata.AppendText("Reflectivity " + reflectivity);
+                    }
+                }
+                else
+                {
+                    txtbox_part_number.Text = "No sensor connected";
+                    txtbox_processdata.Clear();
+                    txtbox_processdata.Text = "Invalid data";
                 }
             }
-            else
+            catch (Exception ex)
             {
-                txtbox_part_number.Text = "No sensor connected";
-                txtbox_processdata.Clear();
-                txtbox_processdata.Text = "Invalid data";
+                txtbox_ipaddress.Text = "Enter a valid IP address";
             }
             client.Dispose();
         }

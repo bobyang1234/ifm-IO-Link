@@ -23,8 +23,15 @@ namespace IO_Link
         {
             txtbox_response.Clear();            
             HttpClient client = new HttpClient();
-            string response = await client.GetStringAsync(url);
-            txtbox_response.Text = response;  
+            try
+            {
+                string response = await client.GetStringAsync(url);
+                txtbox_response.Text = response;
+            }
+            catch (Exception ex)
+            {
+                txtbox_response.Text = "invalid URL";
+            }             
             client.Dispose();
         }
         private void btn_sendcmd_Click(object sender, EventArgs e)
@@ -34,7 +41,18 @@ namespace IO_Link
 
         private void btn_prettyjson_Click(object sender, EventArgs e)
         {
-            txtbox_response.Text = JToken.Parse(txtbox_response.Text).ToString();
+            try
+            {
+                txtbox_response.Text = JToken.Parse(txtbox_response.Text).ToString();
+            }
+            catch (JsonReaderException jex)
+            {
+                txtbox_response.Text = jex.Message;
+            }
+            catch(Exception ex)
+            {
+                txtbox_response.Text = ex.Message;
+            }
         }
     }
 }

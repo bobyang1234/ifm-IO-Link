@@ -75,23 +75,28 @@ namespace IO_Link
             pdout.adr = "iolinkmaster/port[" + port_number + "]/iolinkdevice/pdout/setdata";
             pdout.code = "request";
             pdout.cid = 1;
-            if (segment == 0)
+            pdout.data = new Data();
+            string getdata = await client.GetStringAsync("http://" + io_link_ip + "/iolinkmaster/port[" + port_number + "]/iolinkdevice/pdout/getdata");
+            Response prev_data = JsonConvert.DeserializeObject<Response>(getdata);
+            if(prev_data.code != 200)
+            {
+                txt_portnumber.Text = "Enter a valid port";
+                return;
+            }
+            else if (prev_data.code == 200 && segment == 0)
             {
                 pdout.data = new Data();
                 pdout.data.newvalue = "000000000000";
             }
-            else if (segment == 6)
+            else if (prev_data.code == 200 && segment == 6)
             {
                 pdout.data = new Data();
                 pdout.data.newvalue = "00000000001F";
             }
             else
             {
-                pdout.data = new Data();
-                var getdata = await client.GetStringAsync("http://" + io_link_ip + "/iolinkmaster/port[" + port_number + "]/iolinkdevice/pdout/getdata");
-                Response prev_data = JsonConvert.DeserializeObject<Response>(getdata);
                 int output = int.Parse(prev_data.data.value, System.Globalization.NumberStyles.HexNumber);
-                pdout.data.newvalue = hexstring(output, segment, on);              
+                pdout.data.newvalue = hexstring(output, segment, on);                             
             }
             var jsonString = Newtonsoft.Json.JsonConvert.SerializeObject(pdout);
             var reply = await client.PostAsync("http://" + io_link_ip, new StringContent(jsonString, Encoding.UTF8, "application/json"));            
@@ -220,12 +225,26 @@ namespace IO_Link
 
         private void btn_allon_Click(object sender, EventArgs e)
         {
-            DV2500_pdout(int.Parse(txt_portnumber.Text), 6, true);
+            if (rgx.IsMatch(txt_portnumber.Text))
+            {
+                DV2500_pdout(int.Parse(txt_portnumber.Text), 6, true);
+            }
+            else
+            {
+                txt_portnumber.Text = "Enter a valid port";
+            }            
         }
 
         private void btn_alloff_Click(object sender, EventArgs e)
         {
-            DV2500_pdout(int.Parse(txt_portnumber.Text), 0, false);
+            if (rgx.IsMatch(txt_portnumber.Text))
+            {
+                DV2500_pdout(int.Parse(txt_portnumber.Text), 0, false);
+            }
+            else
+            {
+                txt_portnumber.Text = "Enter a valid port";
+            }            
         }
     }
 }
