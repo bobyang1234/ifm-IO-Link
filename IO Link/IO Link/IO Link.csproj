@@ -47,6 +47,9 @@
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http.Json, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.Json.5.0.0\lib\net461\System.Net.Http.Json.dll</HintPath>
     </Reference>
@@ -80,6 +83,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ifmApiClient.cs" />
     <Compile Include="DV2500 Output.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +108,11 @@
     <Compile Include="HTTP POST.Designer.cs">
       <DependentUpon>HTTP POST.cs</DependentUpon>
     </Compile>
+    <Compile Include="ifmAPIRequest.cs" />
+    <Compile Include="IOLinkPDOutData.cs" />
+    <Compile Include="IOLinkPDOut.cs" />
+    <Compile Include="IOLinkResponse.cs" />
+    <Compile Include="IOLinkResponseData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Base.resx">

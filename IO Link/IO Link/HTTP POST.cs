@@ -15,32 +15,14 @@ namespace IO_Link
 {
     public partial class HTTP_POST : Form
     {
+        private ifmAPIRequest request;
+        private IOLinkResponse post_reply;
+            
         public HTTP_POST()
         {
             InitializeComponent();
-        }
-        private async void http_post_request(string url, string json)
-        {
-            txtbox_response.Clear();
-            HttpClient client = new HttpClient();
-            try
-            {
-                var response = await client.PostAsync(url, new StringContent(json, Encoding.UTF8, "application/json"));
-                if (response.IsSuccessStatusCode)
-                {
-                    txtbox_response.Text = await response.Content.ReadAsStringAsync();
-                }
-                else
-                {
-                    txtbox_response.Text = response.StatusCode.ToString();
-                }    
-            }
-            catch (Exception ex)
-            {
-                txtbox_response.Text = ex.Message;
-            }            
-            client.Dispose();
-        }
+            request = new ifmAPIRequest();
+        }        
         private void btn_prettyjson_Click(object sender, EventArgs e)
         {
             try
@@ -69,9 +51,10 @@ namespace IO_Link
             }                                 
         }
 
-        private void btn_sendcmd_Click(object sender, EventArgs e)
+        private async void btn_sendcmd_Click(object sender, EventArgs e)
         {
-            http_post_request(txtbox_url.Text, txtbox_body.Text);
+            post_reply = await request.PostRequest(txtbox_url.Text, txtbox_body.Text);
+            txtbox_response.Text = JsonConvert.SerializeObject(post_reply);
         }
 
         
