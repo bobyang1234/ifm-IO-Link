@@ -15,21 +15,14 @@ namespace IO_Link
 {
     public partial class Base : Form
     {
-        public class Databack
-        {
-            public string value { get; set; }
-        }
-
-        public class Response
-        {
-            public int cid { get; set; }
-            public Databack data { get; set; }
-            public int code { get; set; }
-        }
-
+        private ifmAPIRequest request;
+        private IOLinkResponse part_number;
+        private IOLinkResponse process_data;        
         public Base()
         {
             InitializeComponent();
+            ifmApiClient.InitializeClient();
+            request = new ifmAPIRequest();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -37,80 +30,94 @@ namespace IO_Link
             txtbox_ipaddress.Text = "192.168.0.10";
         }
 
-        private async void read_IO_Link_port(int port_number)
+        private void ClearAllTextbox()
         {
             txtbox_processdata.Clear();
             txtbox_part_number.Clear();
-            HttpClient client = new HttpClient();
-            try
+        }
+
+        private void DisplayValues(IOLinkResponse part_num, IOLinkResponse data)
+        {
+            if (part_num.code == 200)
             {
-                string response_name = await client.GetStringAsync("http://" + txtbox_ipaddress.Text + "/iolinkmaster/port[" + port_number + "]/iolinkdevice/productname/getdata");
-                Response port_partnumber = JsonConvert.DeserializeObject<Response>(response_name);
-                if (port_partnumber.code == 200)
+                txtbox_part_number.Text = part_num.data.value;
+                if (part_num.data.value == "OGD592")
                 {
-                    txtbox_part_number.Text = port_partnumber.data.value;
-                    string response_data = await client.GetStringAsync("http://" + txtbox_ipaddress.Text + "/iolinkmaster/port[" + port_number + "]/iolinkdevice/pdin/getdata");
-                    Response port_processdata = JsonConvert.DeserializeObject<Response>(response_data);
-                    if (port_partnumber.data.value == "OGD592")
-                    {
-                        int distance = int.Parse(port_processdata.data.value.Substring(0, 4), System.Globalization.NumberStyles.HexNumber);
-                        int reflectivity = int.Parse(port_processdata.data.value.Substring(8, 4), System.Globalization.NumberStyles.HexNumber);
-                        txtbox_processdata.AppendText("Distance  " + distance);
-                        txtbox_processdata.AppendText(Environment.NewLine);
-                        txtbox_processdata.AppendText("Reflectivity " + reflectivity);
-                    }
-                }
-                else
-                {
-                    txtbox_part_number.Text = "No sensor connected";
-                    txtbox_processdata.Clear();
-                    txtbox_processdata.Text = "Invalid data";
+                    int distance = int.Parse(data.data.value.Substring(0, 4), System.Globalization.NumberStyles.HexNumber);
+                    int reflectivity = int.Parse(data.data.value.Substring(8, 4), System.Globalization.NumberStyles.HexNumber);
+                    txtbox_processdata.AppendText($"Distance {distance}");
+                    txtbox_processdata.AppendText(Environment.NewLine);
+                    txtbox_processdata.AppendText($"Reflectivity  {reflectivity}");
                 }
             }
-            catch (Exception ex)
+            else
             {
-                txtbox_ipaddress.Text = "Enter a valid IP address";
+                txtbox_part_number.Text = "No sensor connected";
+                txtbox_processdata.Clear();
+                txtbox_processdata.Text = "Invalid data";
             }
-            client.Dispose();
+        }
+        private async void btn_port1_Click(object sender, EventArgs e)
+        {
+            ClearAllTextbox();
+            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[1]/iolinkdevice/productname/getdata");
+            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[1]/iolinkdevice/pdin/getdata");
+            DisplayValues(part_number, process_data);
         }
 
-        private void btn_port1_Click(object sender, EventArgs e)
+        private async void btn_port2_Click(object sender, EventArgs e)
         {
-            read_IO_Link_port(1);
+            ClearAllTextbox();
+            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[2]/iolinkdevice/productname/getdata");
+            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[2]/iolinkdevice/pdin/getdata");
+            DisplayValues(part_number, process_data);
+        }
+        private async void btn_port3_Click(object sender, EventArgs e)
+        {
+            ClearAllTextbox();
+            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[3]/iolinkdevice/productname/getdata");
+            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[3]/iolinkdevice/pdin/getdata");
+            DisplayValues(part_number, process_data);
         }
 
-        private void btn_port2_Click(object sender, EventArgs e)
+        private async void btn_port4_Click(object sender, EventArgs e)
         {
-            read_IO_Link_port(2);
-        }
-        private void btn_port3_Click(object sender, EventArgs e)
-        {
-            read_IO_Link_port(3);
-        }
-
-        private void btn_port4_Click(object sender, EventArgs e)
-        {
-            read_IO_Link_port(4);
+            ClearAllTextbox();
+            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[4]/iolinkdevice/productname/getdata");
+            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[4]/iolinkdevice/pdin/getdata");
+            DisplayValues(part_number, process_data);
         }
 
-        private void btn_port5_Click(object sender, EventArgs e)
+        private async void btn_port5_Click(object sender, EventArgs e)
         {
-            read_IO_Link_port(5);
+            ClearAllTextbox();
+            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[5]/iolinkdevice/productname/getdata");
+            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[5]/iolinkdevice/pdin/getdata");
+            DisplayValues(part_number, process_data);
         }
 
-        private void btn_port6_Click(object sender, EventArgs e)
+        private async void btn_port6_Click(object sender, EventArgs e)
         {
-            read_IO_Link_port(6);
+            ClearAllTextbox();
+            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[6]/iolinkdevice/productname/getdata");
+            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[6]/iolinkdevice/pdin/getdata");
+            DisplayValues(part_number, process_data);
         }
 
-        private void btn_port7_Click(object sender, EventArgs e)
+        private async void btn_port7_Click(object sender, EventArgs e)
         {
-            read_IO_Link_port(7);
+            ClearAllTextbox();
+            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[7]/iolinkdevice/productname/getdata");
+            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[7]/iolinkdevice/pdin/getdata");
+            DisplayValues(part_number, process_data);
         }
 
-        private void btn_port8_Click(object sender, EventArgs e)
+        private async void btn_port8_Click(object sender, EventArgs e)
         {
-            read_IO_Link_port(8);
+            ClearAllTextbox();
+            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[8]/iolinkdevice/productname/getdata");
+            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[8]/iolinkdevice/pdin/getdata");
+            DisplayValues(part_number, process_data);
         }
 
         private void btn_httpget_Click(object sender, EventArgs e)

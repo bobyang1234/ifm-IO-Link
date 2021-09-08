@@ -15,28 +15,17 @@ namespace IO_Link
 {
     public partial class HTTP_GET : Form
     {
+        private ifmAPIRequest request;
+        private IOLinkResponse response;
         public HTTP_GET()
         {
-            InitializeComponent();            
+            InitializeComponent();
+            request = new ifmAPIRequest();
         }        
-        private async void http_get_request(string url)
+        private async void btn_sendcmd_Click(object sender, EventArgs e)
         {
-            txtbox_response.Clear();            
-            HttpClient client = new HttpClient();
-            try
-            {
-                string response = await client.GetStringAsync(url);
-                txtbox_response.Text = response;
-            }
-            catch (Exception ex)
-            {
-                txtbox_response.Text = "invalid URL";
-            }             
-            client.Dispose();
-        }
-        private void btn_sendcmd_Click(object sender, EventArgs e)
-        {
-            http_get_request(txtbox_url.Text);
+            response = await request.GetRequest(txtbox_url.Text);
+            txtbox_response.Text = JsonConvert.SerializeObject(response);
         }
 
         private void btn_prettyjson_Click(object sender, EventArgs e)
