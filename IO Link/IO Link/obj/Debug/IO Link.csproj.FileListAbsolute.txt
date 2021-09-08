@@ -70,3 +70,5 @@ D:\C#\ifm-IO-Link\IO Link\IO Link\obj\Debug\IO Link.csproj.CoreCompileInputs.cac
 D:\C#\ifm-IO-Link\IO Link\IO Link\obj\Debug\IO Link.csproj.CopyComplete
 D:\C#\ifm-IO-Link\IO Link\IO Link\obj\Debug\IO Link.exe
 D:\C#\ifm-IO-Link\IO Link\IO Link\obj\Debug\IO Link.pdb
+D:\C#\ifm-IO-Link\IO Link\IO Link\bin\Debug\System.Net.Http.Formatting.dll
+D:\C#\ifm-IO-Link\IO Link\IO Link\bin\Debug\System.Net.Http.Formatting.xml
