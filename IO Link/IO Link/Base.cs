@@ -74,7 +74,7 @@ namespace IO_Link
                 lbl_exception.Visible = true;
                 txtbox_exception.Visible = true;
                 txtbox_exception.Text = ex.Message;
-            }                
+            }  
         }
 
         private async void btn_port2_Click(object sender, EventArgs e)
