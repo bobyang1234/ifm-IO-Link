@@ -22,41 +22,69 @@ namespace IO_Link
         {
             InitializeComponent();
             request = new ifmAPIRequest();
-        }        
-        private void btn_prettyjson_Click(object sender, EventArgs e)
+        }
+        
+        private void btn_prettyjsonbody_Click(object sender, EventArgs e)
         {
-            try
-            {
-                txtbox_response.Text = JToken.Parse(txtbox_response.Text).ToString();
-            }
-            catch (JsonReaderException jex)
-            {
-                txtbox_response.Text = jex.Message;
-            }
-            catch (Exception ex)
-            {
-                txtbox_response.Text = ex.Message;
-            }
+            txtbox_exception.Clear();
             try
             {
                 txtbox_body.Text = JToken.Parse(txtbox_body.Text).ToString();
+                lbl_exception.Visible = false;
+                txtbox_exception.Visible = false;
             }
-            catch (JsonReaderException jex)
+            catch (JsonReaderException)
             {
-                txtbox_body.Text = jex.Message;
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.AppendText("Body textbox does not contain valid JSON" + Environment.NewLine);
             }
             catch (Exception ex)
             {
-                txtbox_body.Text = ex.Message;
-            }                                 
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.Text = ex.Message;
+            }
+        }
+
+        private void btn_prettyjsonresponse_Click(object sender, EventArgs e)
+        {
+            txtbox_exception.Clear();
+            try
+            {
+                txtbox_response.Text = JToken.Parse(txtbox_response.Text).ToString();
+                lbl_exception.Visible = false;
+                txtbox_exception.Visible = false;
+            }
+            catch (JsonReaderException)
+            {
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.AppendText("Response textbox does not contain valid JSON" + Environment.NewLine);
+            }
+            catch (Exception ex)
+            {
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.Text = ex.Message;
+            }
         }
 
         private async void btn_sendcmd_Click(object sender, EventArgs e)
         {
-            post_reply = await request.PostRequest(txtbox_url.Text, txtbox_body.Text);
-            txtbox_response.Text = JsonConvert.SerializeObject(post_reply);
-        }
-
-        
+            try
+            {
+                post_reply = await request.PostRequest(txtbox_url.Text, txtbox_body.Text);
+                txtbox_response.Text = JsonConvert.SerializeObject(post_reply);
+                lbl_exception.Visible = false;
+                txtbox_exception.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.Text = ex.Message;
+            }
+        }        
     }
 }

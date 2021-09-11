@@ -48,6 +48,8 @@ namespace IO_Link
             this.btn_allon = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.txt_portnumber = new System.Windows.Forms.TextBox();
+            this.lbl_exception = new System.Windows.Forms.Label();
+            this.txtbox_exception = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -232,17 +234,40 @@ namespace IO_Link
             // 
             // txt_portnumber
             // 
-            this.txt_portnumber.Location = new System.Drawing.Point(510, 56);
+            this.txt_portnumber.Location = new System.Drawing.Point(495, 56);
             this.txt_portnumber.Name = "txt_portnumber";
-            this.txt_portnumber.Size = new System.Drawing.Size(154, 20);
+            this.txt_portnumber.Size = new System.Drawing.Size(265, 20);
             this.txt_portnumber.TabIndex = 18;
             this.txt_portnumber.Text = "Enter a value between 1 and 8";
+            // 
+            // lbl_exception
+            // 
+            this.lbl_exception.AutoSize = true;
+            this.lbl_exception.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_exception.Location = new System.Drawing.Point(397, 87);
+            this.lbl_exception.Name = "lbl_exception";
+            this.lbl_exception.Size = new System.Drawing.Size(73, 18);
+            this.lbl_exception.TabIndex = 21;
+            this.lbl_exception.Text = "Exception";
+            this.lbl_exception.Visible = false;
+            // 
+            // txtbox_exception
+            // 
+            this.txtbox_exception.Location = new System.Drawing.Point(483, 87);
+            this.txtbox_exception.Multiline = true;
+            this.txtbox_exception.Name = "txtbox_exception";
+            this.txtbox_exception.ReadOnly = true;
+            this.txtbox_exception.Size = new System.Drawing.Size(277, 149);
+            this.txtbox_exception.TabIndex = 20;
+            this.txtbox_exception.Visible = false;
             // 
             // DV2500_Output
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_exception);
+            this.Controls.Add(this.txtbox_exception);
             this.Controls.Add(this.txt_portnumber);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btn_alloff);
@@ -290,5 +315,7 @@ namespace IO_Link
         private System.Windows.Forms.Button btn_allon;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_portnumber;
+        private System.Windows.Forms.Label lbl_exception;
+        private System.Windows.Forms.TextBox txtbox_exception;
     }
 }

@@ -24,8 +24,19 @@ namespace IO_Link
         }        
         private async void btn_sendcmd_Click(object sender, EventArgs e)
         {
-            response = await request.GetRequest(txtbox_url.Text);
-            txtbox_response.Text = JsonConvert.SerializeObject(response);
+            try
+            {
+                response = await request.GetRequest(txtbox_url.Text);
+                txtbox_response.Text = JsonConvert.SerializeObject(response);
+                lbl_exception.Visible = false;
+                txtbox_exception.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.Text = ex.Message;
+            }
         }
 
         private void btn_prettyjson_Click(object sender, EventArgs e)
@@ -33,14 +44,20 @@ namespace IO_Link
             try
             {
                 txtbox_response.Text = JToken.Parse(txtbox_response.Text).ToString();
+                lbl_exception.Visible = false;
+                txtbox_exception.Visible = false;
             }
-            catch (JsonReaderException jex)
+            catch (JsonReaderException)
             {
-                txtbox_response.Text = jex.Message;
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.Text = "Response does not contain valid JSON";
             }
             catch(Exception ex)
             {
-                txtbox_response.Text = ex.Message;
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.Text = ex.Message;
             }
         }
     }

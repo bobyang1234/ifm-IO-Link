@@ -47,6 +47,8 @@ namespace IO_Link
             this.label3 = new System.Windows.Forms.Label();
             this.txtbox_ipaddress = new System.Windows.Forms.TextBox();
             this.btn_DV2500 = new System.Windows.Forms.Button();
+            this.lbl_exception = new System.Windows.Forms.Label();
+            this.txtbox_exception = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -223,11 +225,33 @@ namespace IO_Link
             this.btn_DV2500.UseVisualStyleBackColor = true;
             this.btn_DV2500.Click += new System.EventHandler(this.btn_DV2500_Click);
             // 
+            // lbl_exception
+            // 
+            this.lbl_exception.AutoSize = true;
+            this.lbl_exception.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_exception.Location = new System.Drawing.Point(547, 105);
+            this.lbl_exception.Name = "lbl_exception";
+            this.lbl_exception.Size = new System.Drawing.Size(73, 18);
+            this.lbl_exception.TabIndex = 19;
+            this.lbl_exception.Text = "Exception";
+            this.lbl_exception.Visible = false;
+            // 
+            // txtbox_exception
+            // 
+            this.txtbox_exception.Location = new System.Drawing.Point(633, 105);
+            this.txtbox_exception.Name = "txtbox_exception";
+            this.txtbox_exception.ReadOnly = true;
+            this.txtbox_exception.Size = new System.Drawing.Size(489, 20);
+            this.txtbox_exception.TabIndex = 18;
+            this.txtbox_exception.Visible = false;
+            // 
             // Base
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1248, 770);
+            this.Controls.Add(this.lbl_exception);
+            this.Controls.Add(this.txtbox_exception);
             this.Controls.Add(this.btn_DV2500);
             this.Controls.Add(this.txtbox_ipaddress);
             this.Controls.Add(this.label3);
@@ -275,6 +299,8 @@ namespace IO_Link
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtbox_ipaddress;
         private System.Windows.Forms.Button btn_DV2500;
+        private System.Windows.Forms.Label lbl_exception;
+        private System.Windows.Forms.TextBox txtbox_exception;
     }
 }
 

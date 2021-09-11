@@ -60,64 +60,160 @@ namespace IO_Link
         private async void btn_port1_Click(object sender, EventArgs e)
         {
             ClearAllTextbox();
-            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[1]/iolinkdevice/productname/getdata");
-            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[1]/iolinkdevice/pdin/getdata");
-            DisplayValues(part_number, process_data);
+            try
+            {
+                part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[1]/iolinkdevice/productname/getdata");
+                process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[1]/iolinkdevice/pdin/getdata");
+                lbl_exception.Visible = false;
+                txtbox_exception.Visible = false;
+                DisplayValues(part_number, process_data);
+            }
+            catch (Exception ex)
+            {
+                txtbox_ipaddress.Text = "Please enter a valid ip address";
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.Text = ex.Message;
+            }                
         }
 
         private async void btn_port2_Click(object sender, EventArgs e)
         {
             ClearAllTextbox();
-            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[2]/iolinkdevice/productname/getdata");
-            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[2]/iolinkdevice/pdin/getdata");
-            DisplayValues(part_number, process_data);
+            try
+            {
+                part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[2]/iolinkdevice/productname/getdata");
+                process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[2]/iolinkdevice/pdin/getdata");
+                lbl_exception.Visible = false;
+                txtbox_exception.Visible = false;
+                DisplayValues(part_number, process_data);
+            }
+            catch (Exception ex)
+            {
+                txtbox_ipaddress.Text = "Please enter a valid ip address";
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.Text = ex.Message;                
+            }
         }
         private async void btn_port3_Click(object sender, EventArgs e)
         {
             ClearAllTextbox();
-            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[3]/iolinkdevice/productname/getdata");
-            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[3]/iolinkdevice/pdin/getdata");
-            DisplayValues(part_number, process_data);
+            try
+            {
+                part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[3]/iolinkdevice/productname/getdata");
+                process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[3]/iolinkdevice/pdin/getdata");
+                lbl_exception.Visible = false;
+                txtbox_exception.Visible = false;
+                DisplayValues(part_number, process_data);
+            }
+            catch (Exception ex)
+            {
+                txtbox_ipaddress.Text = "Please enter a valid ip address";
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.Text = ex.Message;
+            }
         }
 
         private async void btn_port4_Click(object sender, EventArgs e)
         {
             ClearAllTextbox();
-            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[4]/iolinkdevice/productname/getdata");
-            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[4]/iolinkdevice/pdin/getdata");
-            DisplayValues(part_number, process_data);
+            try
+            {
+                part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[4]/iolinkdevice/productname/getdata");
+                process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[4]/iolinkdevice/pdin/getdata");
+                lbl_exception.Visible = false;
+                txtbox_exception.Visible = false;
+                DisplayValues(part_number, process_data);
+            }
+            catch (Exception ex)
+            {
+                txtbox_ipaddress.Text = "Please enter a valid ip address";
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.Text = ex.Message;
+            }
         }
 
         private async void btn_port5_Click(object sender, EventArgs e)
         {
             ClearAllTextbox();
-            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[5]/iolinkdevice/productname/getdata");
-            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[5]/iolinkdevice/pdin/getdata");
-            DisplayValues(part_number, process_data);
+            try
+            {
+                part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[5]/iolinkdevice/productname/getdata");
+                process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[5]/iolinkdevice/pdin/getdata");
+                lbl_exception.Visible = false;
+                txtbox_exception.Visible = false;
+                DisplayValues(part_number, process_data);
+            }
+            catch (Exception ex)
+            {
+                txtbox_ipaddress.Text = "Please enter a valid ip address";
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.Text = ex.Message;
+            }
         }
 
         private async void btn_port6_Click(object sender, EventArgs e)
         {
             ClearAllTextbox();
-            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[6]/iolinkdevice/productname/getdata");
-            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[6]/iolinkdevice/pdin/getdata");
-            DisplayValues(part_number, process_data);
+            try
+            {
+                part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[6]/iolinkdevice/productname/getdata");
+                process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[6]/iolinkdevice/pdin/getdata");
+                lbl_exception.Visible = false;
+                txtbox_exception.Visible = false;
+                DisplayValues(part_number, process_data);
+            }
+            catch (Exception ex)
+            {
+                txtbox_ipaddress.Text = "Please enter a valid ip address";
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.Text = ex.Message;
+            }
         }
 
         private async void btn_port7_Click(object sender, EventArgs e)
         {
             ClearAllTextbox();
-            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[7]/iolinkdevice/productname/getdata");
-            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[7]/iolinkdevice/pdin/getdata");
-            DisplayValues(part_number, process_data);
+            try
+            {
+                part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[7]/iolinkdevice/productname/getdata");
+                process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[7]/iolinkdevice/pdin/getdata");
+                lbl_exception.Visible = false;
+                txtbox_exception.Visible = false;
+                DisplayValues(part_number, process_data);
+            }
+            catch (Exception ex)
+            {
+                txtbox_ipaddress.Text = "Please enter a valid ip address";
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.Text = ex.Message;
+            }
         }
 
         private async void btn_port8_Click(object sender, EventArgs e)
         {
             ClearAllTextbox();
-            part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[8]/iolinkdevice/productname/getdata");
-            process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[8]/iolinkdevice/pdin/getdata");
-            DisplayValues(part_number, process_data);
+            try
+            {
+                part_number = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[8]/iolinkdevice/productname/getdata");
+                process_data = await request.GetRequest($"http://{txtbox_ipaddress.Text}/iolinkmaster/port[8]/iolinkdevice/pdin/getdata");
+                lbl_exception.Visible = false;
+                txtbox_exception.Visible = false;
+                DisplayValues(part_number, process_data);
+            }
+            catch (Exception ex)
+            {
+                txtbox_ipaddress.Text = "Please enter a valid ip address";
+                lbl_exception.Visible = true;
+                txtbox_exception.Visible = true;
+                txtbox_exception.Text = ex.Message;
+            }
         }
 
         private void btn_httpget_Click(object sender, EventArgs e)

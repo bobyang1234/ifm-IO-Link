@@ -1,0 +1,25 @@
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\xunit.abstractions.dll
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\xunit.runner.visualstudio.testadapter.dll
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\xunit.runner.reporters.net452.dll
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\xunit.runner.utility.net452.dll
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\IOLinkTests.dll.config
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\IOLinkTests.dll
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\IOLinkTests.pdb
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\IO Link.exe
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\xunit.assert.dll
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\xunit.core.dll
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\xunit.execution.desktop.dll
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\Newtonsoft.Json.dll
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\System.Net.Http.Formatting.dll
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\IO Link.pdb
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\IO Link.exe.config
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\xunit.assert.xml
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\xunit.core.xml
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\xunit.execution.desktop.xml
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\Newtonsoft.Json.xml
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\bin\Debug\System.Net.Http.Formatting.xml
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\obj\Debug\IOLinkTests.csproj.AssemblyReference.cache
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\obj\Debug\IOLinkTests.csproj.CoreCompileInputs.cache
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\obj\Debug\IOLinkTests.csproj.CopyComplete
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\obj\Debug\IOLinkTests.dll
+D:\C#\ifm-IO-Link\IO Link\IOLinkTests\obj\Debug\IOLinkTests.pdb

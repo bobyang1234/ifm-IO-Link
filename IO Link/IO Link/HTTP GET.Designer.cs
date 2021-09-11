@@ -35,6 +35,8 @@ namespace IO_Link
             this.label2 = new System.Windows.Forms.Label();
             this.txtbox_response = new System.Windows.Forms.TextBox();
             this.btn_prettyjson = new System.Windows.Forms.Button();
+            this.lbl_exception = new System.Windows.Forms.Label();
+            this.txtbox_exception = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtbox_url
@@ -93,11 +95,34 @@ namespace IO_Link
             this.btn_prettyjson.UseVisualStyleBackColor = true;
             this.btn_prettyjson.Click += new System.EventHandler(this.btn_prettyjson_Click);
             // 
+            // lbl_exception
+            // 
+            this.lbl_exception.AutoSize = true;
+            this.lbl_exception.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_exception.Location = new System.Drawing.Point(142, 353);
+            this.lbl_exception.Name = "lbl_exception";
+            this.lbl_exception.Size = new System.Drawing.Size(73, 18);
+            this.lbl_exception.TabIndex = 21;
+            this.lbl_exception.Text = "Exception";
+            this.lbl_exception.Visible = false;
+            // 
+            // txtbox_exception
+            // 
+            this.txtbox_exception.Location = new System.Drawing.Point(221, 353);
+            this.txtbox_exception.Multiline = true;
+            this.txtbox_exception.Name = "txtbox_exception";
+            this.txtbox_exception.ReadOnly = true;
+            this.txtbox_exception.Size = new System.Drawing.Size(497, 52);
+            this.txtbox_exception.TabIndex = 20;
+            this.txtbox_exception.Visible = false;
+            // 
             // HTTP_GET
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lbl_exception);
+            this.Controls.Add(this.txtbox_exception);
             this.Controls.Add(this.btn_prettyjson);
             this.Controls.Add(this.txtbox_response);
             this.Controls.Add(this.label2);
@@ -119,5 +144,7 @@ namespace IO_Link
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtbox_response;
         private System.Windows.Forms.Button btn_prettyjson;
+        private System.Windows.Forms.Label lbl_exception;
+        private System.Windows.Forms.TextBox txtbox_exception;
     }
 }

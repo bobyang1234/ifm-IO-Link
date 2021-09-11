@@ -29,7 +29,7 @@ namespace IO_Link
         /// </summary>
         private void InitializeComponent()
         {
-            this.btn_prettyjson = new System.Windows.Forms.Button();
+            this.btn_prettyjsonbody = new System.Windows.Forms.Button();
             this.txtbox_response = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_sendcmd = new System.Windows.Forms.Button();
@@ -41,21 +41,24 @@ namespace IO_Link
             this.txtbox_normalbody = new System.Windows.Forms.TextBox();
             this.txtbox_databody = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbl_exception = new System.Windows.Forms.Label();
+            this.txtbox_exception = new System.Windows.Forms.TextBox();
+            this.btn_prettyjsonresponse = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btn_prettyjson
+            // btn_prettyjsonbody
             // 
-            this.btn_prettyjson.Location = new System.Drawing.Point(243, 126);
-            this.btn_prettyjson.Name = "btn_prettyjson";
-            this.btn_prettyjson.Size = new System.Drawing.Size(87, 38);
-            this.btn_prettyjson.TabIndex = 11;
-            this.btn_prettyjson.Text = "Pretty JSON";
-            this.btn_prettyjson.UseVisualStyleBackColor = true;
-            this.btn_prettyjson.Click += new System.EventHandler(this.btn_prettyjson_Click);
+            this.btn_prettyjsonbody.Location = new System.Drawing.Point(252, 69);
+            this.btn_prettyjsonbody.Name = "btn_prettyjsonbody";
+            this.btn_prettyjsonbody.Size = new System.Drawing.Size(87, 38);
+            this.btn_prettyjsonbody.TabIndex = 11;
+            this.btn_prettyjsonbody.Text = "Pretty JSON";
+            this.btn_prettyjsonbody.UseVisualStyleBackColor = true;
+            this.btn_prettyjsonbody.Click += new System.EventHandler(this.btn_prettyjsonbody_Click);
             // 
             // txtbox_response
             // 
-            this.txtbox_response.Location = new System.Drawing.Point(450, 186);
+            this.txtbox_response.Location = new System.Drawing.Point(459, 129);
             this.txtbox_response.Multiline = true;
             this.txtbox_response.Name = "txtbox_response";
             this.txtbox_response.ReadOnly = true;
@@ -66,7 +69,7 @@ namespace IO_Link
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(368, 185);
+            this.label2.Location = new System.Drawing.Point(377, 128);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 18);
             this.label2.TabIndex = 9;
@@ -74,7 +77,7 @@ namespace IO_Link
             // 
             // btn_sendcmd
             // 
-            this.btn_sendcmd.Location = new System.Drawing.Point(132, 126);
+            this.btn_sendcmd.Location = new System.Drawing.Point(141, 69);
             this.btn_sendcmd.Name = "btn_sendcmd";
             this.btn_sendcmd.Size = new System.Drawing.Size(87, 38);
             this.btn_sendcmd.TabIndex = 8;
@@ -86,7 +89,7 @@ namespace IO_Link
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(128, 83);
+            this.label1.Location = new System.Drawing.Point(137, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 18);
             this.label1.TabIndex = 7;
@@ -94,14 +97,14 @@ namespace IO_Link
             // 
             // txtbox_url
             // 
-            this.txtbox_url.Location = new System.Drawing.Point(193, 81);
+            this.txtbox_url.Location = new System.Drawing.Point(202, 24);
             this.txtbox_url.Name = "txtbox_url";
             this.txtbox_url.Size = new System.Drawing.Size(497, 20);
             this.txtbox_url.TabIndex = 6;
             // 
             // txtbox_body
             // 
-            this.txtbox_body.Location = new System.Drawing.Point(122, 185);
+            this.txtbox_body.Location = new System.Drawing.Point(131, 128);
             this.txtbox_body.Multiline = true;
             this.txtbox_body.Name = "txtbox_body";
             this.txtbox_body.Size = new System.Drawing.Size(240, 183);
@@ -112,7 +115,7 @@ namespace IO_Link
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(63, 184);
+            this.label3.Location = new System.Drawing.Point(72, 127);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 18);
             this.label3.TabIndex = 12;
@@ -121,7 +124,7 @@ namespace IO_Link
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 398);
+            this.label4.Location = new System.Drawing.Point(18, 391);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 14;
@@ -129,7 +132,7 @@ namespace IO_Link
             // 
             // txtbox_normalbody
             // 
-            this.txtbox_normalbody.Location = new System.Drawing.Point(25, 430);
+            this.txtbox_normalbody.Location = new System.Drawing.Point(21, 422);
             this.txtbox_normalbody.Multiline = true;
             this.txtbox_normalbody.Name = "txtbox_normalbody";
             this.txtbox_normalbody.ReadOnly = true;
@@ -139,7 +142,7 @@ namespace IO_Link
             // 
             // txtbox_databody
             // 
-            this.txtbox_databody.Location = new System.Drawing.Point(290, 430);
+            this.txtbox_databody.Location = new System.Drawing.Point(286, 422);
             this.txtbox_databody.Multiline = true;
             this.txtbox_databody.Name = "txtbox_databody";
             this.txtbox_databody.ReadOnly = true;
@@ -150,7 +153,7 @@ namespace IO_Link
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(559, 430);
+            this.textBox1.Location = new System.Drawing.Point(555, 422);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -160,18 +163,52 @@ namespace IO_Link
     "ndex\":%d,\"subindex\":%d,\"value\":\"hex string\"}\r\n}\r\n\r\nRemove value when doing acycl" +
     "ic read";
             // 
+            // lbl_exception
+            // 
+            this.lbl_exception.AutoSize = true;
+            this.lbl_exception.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_exception.Location = new System.Drawing.Point(123, 327);
+            this.lbl_exception.Name = "lbl_exception";
+            this.lbl_exception.Size = new System.Drawing.Size(73, 18);
+            this.lbl_exception.TabIndex = 23;
+            this.lbl_exception.Text = "Exception";
+            this.lbl_exception.Visible = false;
+            // 
+            // txtbox_exception
+            // 
+            this.txtbox_exception.Location = new System.Drawing.Point(202, 327);
+            this.txtbox_exception.Multiline = true;
+            this.txtbox_exception.Name = "txtbox_exception";
+            this.txtbox_exception.ReadOnly = true;
+            this.txtbox_exception.Size = new System.Drawing.Size(497, 52);
+            this.txtbox_exception.TabIndex = 22;
+            this.txtbox_exception.Visible = false;
+            // 
+            // btn_prettyjsonresponse
+            // 
+            this.btn_prettyjsonresponse.Location = new System.Drawing.Point(612, 69);
+            this.btn_prettyjsonresponse.Name = "btn_prettyjsonresponse";
+            this.btn_prettyjsonresponse.Size = new System.Drawing.Size(87, 38);
+            this.btn_prettyjsonresponse.TabIndex = 24;
+            this.btn_prettyjsonresponse.Text = "Pretty JSON";
+            this.btn_prettyjsonresponse.UseVisualStyleBackColor = true;
+            this.btn_prettyjsonresponse.Click += new System.EventHandler(this.btn_prettyjsonresponse_Click);
+            // 
             // HTTP_POST
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(823, 642);
+            this.ClientSize = new System.Drawing.Size(899, 578);
+            this.Controls.Add(this.btn_prettyjsonresponse);
+            this.Controls.Add(this.lbl_exception);
+            this.Controls.Add(this.txtbox_exception);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.txtbox_databody);
             this.Controls.Add(this.txtbox_normalbody);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtbox_body);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.btn_prettyjson);
+            this.Controls.Add(this.btn_prettyjsonbody);
             this.Controls.Add(this.txtbox_response);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_sendcmd);
@@ -186,7 +223,7 @@ namespace IO_Link
 
         #endregion
 
-        private System.Windows.Forms.Button btn_prettyjson;
+        private System.Windows.Forms.Button btn_prettyjsonbody;
         private System.Windows.Forms.TextBox txtbox_response;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btn_sendcmd;
@@ -198,5 +235,8 @@ namespace IO_Link
         private System.Windows.Forms.TextBox txtbox_normalbody;
         private System.Windows.Forms.TextBox txtbox_databody;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lbl_exception;
+        private System.Windows.Forms.TextBox txtbox_exception;
+        private System.Windows.Forms.Button btn_prettyjsonresponse;
     }
 }
